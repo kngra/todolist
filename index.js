@@ -10,16 +10,16 @@ form.addEventListener("submit",function (event) {
 function add() {
     let todoText = input.value;
     if (todoText) {
-    const li = document.createElement("li");
-    li.innerText = todoText;
-    li.classList.add("list-group-item");
-    ul.appendChild(li);
-    input.value = "";
-    saveData();
+        const li = document.createElement("li");
+        li.innerText = todoText;
+        li.classList.add("list-group-item");
+        ul.appendChild(li);
+        input.value = "";
+        saveData();
     }
 }
 
 function saveData(){
-    const lists = document.querySelectorALL("li");
+    const lists = document.querySelectorAll("li");
     console.log(lists);
 }

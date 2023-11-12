@@ -15,5 +15,11 @@ function add() {
     li.classList.add("list-group-item");
     ul.appendChild(li);
     input.value = "";
+    saveData();
     }
+}
+
+function saveData(){
+    const lists = document.querySelectorALL("li");
+    console.log(lists);
 }

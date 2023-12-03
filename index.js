@@ -15,6 +15,12 @@ form.addEventListener("submit",function (event) {
     add();
 });
 
+const submitButton = document.querySelector("button[type='submit']");
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    add();
+});
+
 function add(todo) {
     let todoText = input.value;
 
@@ -25,7 +31,7 @@ function add(todo) {
         const li = document.createElement("li");
         li.innerText = todoText;
         li.classList.add("list-group-item");
-
+ 
         if (todo && todo.completed) {
             li.classList.add("text-decoration-line-through");
         }

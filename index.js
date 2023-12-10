@@ -2,6 +2,7 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
 
+
 const todos = JSON.parse(localStorage.getItem("todos"));
 
 if (todos) {
@@ -35,6 +36,19 @@ function add(todo) {
         if (todo && todo.completed) {
             li.classList.add("text-decoration-line-through");
         }
+
+        const deleteButton = document.createElement("button");
+        deleteButton.type = "button";
+        deleteButton.classList.add("btn");
+        deleteButton.style.float = "right";
+        deleteButton.innerText = "x";
+
+        deleteButton.addEventListener("click", function() {
+            li.remove();
+            saveData();
+        });
+
+        li.appendChild(deleteButton);
 
         li.addEventListener("contextmenu", function
         (event){

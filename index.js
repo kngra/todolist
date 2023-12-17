@@ -2,7 +2,6 @@ const form = document.getElementById("form");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
 
-
 const todos = JSON.parse(localStorage.getItem("todos"));
 
 if (todos) {
@@ -24,13 +23,15 @@ submitButton.addEventListener("click", function(event) {
 
 function add(todo) {
     let todoText = input.value;
+    let priority = document.getElementById("priority").value;
 
     if (todo){
         todoText = todo.text;
+        priority = todo.priority;
     }
     if (todoText) {
         const li = document.createElement("li");
-        li.innerText = todoText;
+        li.innerText = `優先度: ${priority},${todoText}`;
         li.classList.add("list-group-item");
  
         if (todo && todo.completed) {
@@ -74,8 +75,12 @@ function saveData(){
     let todos = [];
 
     lists.forEach(list => {
+        let todoText = list.innerText.replace(/^優先度: \w+, /, ''); 
+        let priority = list.innerText.replace(/優先度: (\w+), .*/, '$1'); 
+
         let todo = {
             text: list.innerText,
+            priority: priority, 
             completed: list.classList.contains
             ("text-decoration-line-through")
         };

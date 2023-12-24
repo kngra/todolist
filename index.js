@@ -31,12 +31,22 @@ function add(todo) {
     }
     if (todoText) {
         const li = document.createElement("li");
-        li.innerText = `優先度: ${priority},${todoText}`;
+        li.textContent = `優先度: ${priority},${todoText}`;
         li.classList.add("list-group-item");
  
         if (todo && todo.completed) {
             li.classList.add("text-decoration-line-through");
         }
+
+        const doneButton = document.createElement("button");
+        doneButton.type = "button";
+        doneButton.classList.add("btn");
+        doneButton.style.float = "right";
+        doneButton.innerText = "完了";
+
+        doneButton.addEventListener("click", function() {
+            saveData();
+        });
 
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
@@ -50,17 +60,17 @@ function add(todo) {
         });
 
         li.appendChild(deleteButton);
+        li.appendChild(doneButton);
 
-        li.addEventListener("contextmenu", function
-        (event){
+
+        li.addEventListener("contextmenu", function(event){
             event.preventDefault();
             li.remove();
             saveData();
         });
 
-        li.addEventListener("click", function () {
-            li.classList.toggle
-            ("text-decoration-line-through");
+        li.addEventListener("click", function (deleteButton) {
+            li.classList.toggle("text-decoration-line-through");
             saveData();
         });
 
@@ -75,7 +85,7 @@ function saveData(){
     let todos = [];
 
     lists.forEach(list => {
-        let todoText = list.innerText.replace(/^優先度: \w+, /, ''); 
+        let todoText = list.textContent.replace(/^優先度: \w+, /, '');
         let priority = list.innerText.replace(/優先度: (\w+), .*/, '$1'); 
 
         let todo = {

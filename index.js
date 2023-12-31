@@ -24,14 +24,20 @@ submitButton.addEventListener("click", function(event) {
 function add(todo) {
     let todoText = input.value;
     let priority = document.getElementById("priority").value;
+    let date = document.getElementById("date").value;
 
     if (todo){
         todoText = todo.text;
         priority = todo.priority;
+        date = todo.date;
     }
     if (todoText) {
         const li = document.createElement("li");
-        li.textContent = `優先度: ${priority},${todoText}`;
+        if (date) {
+            li.textContent = `優先度： ${priority},${todoText}, 期日：${date}`;
+        } else {
+            li.textContent = `優先度： ${priority},${todoText}`;
+        }
         li.classList.add("list-group-item");
  
         if (todo && todo.completed) {
@@ -85,16 +91,17 @@ function saveData(){
     let todos = [];
 
     lists.forEach(list => {
-        let todoText = list.textContent.replace(/^優先度: \w+, /, '');
-        let priority = list.innerText.replace(/優先度: (\w+), .*/, '$1'); 
+        let todoText = list.textContent.replace(/^優先度: \w+, 期日：\w+, /, '');
+        let priority = list.innerText.replace(/優先度: (\w+), 期日：(\w+), .*/, '$1');
+        let date = list.innerText.replace(/優先度: \w+, 期日：(\w+), .*/, '$1');
 
         let todo = {
             text: list.innerText,
-            priority: priority, 
-            completed: list.classList.contains
-            ("text-decoration-line-through")
+            priority: priority,
+            date: date,
+            completed: list.classList.contains("text-decoration-line-through")
         };
-        todos.push(todo); 
+        todos.push(todo);
     });
     localStorage.setItem("todos", JSON.stringify(todos));
 }

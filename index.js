@@ -98,9 +98,13 @@ function saveData(){
         let todo = {
             text: list.innerText,
             priority: priority,
-            date: date,
             completed: list.classList.contains("text-decoration-line-through")
         };
+        
+        if (date) {
+            todo.date = date;
+        }
+
         todos.push(todo);
     });
     localStorage.setItem("todos", JSON.stringify(todos));

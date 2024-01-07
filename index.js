@@ -34,9 +34,9 @@ function add(todo) {
     if (todoText) {
         const li = document.createElement("li");
         if (date) {
-            li.textContent = `優先度： ${priority},${todoText}, 期日：${date}`;
+            li.textContent = `優先度：${priority} ,${todoText}, 期日：${date}`;
         } else {
-            li.textContent = `優先度： ${priority},${todoText}`;
+            li.textContent = `優先度：${priority} ,${todoText}`;
         }
         li.classList.add("list-group-item");
  
@@ -48,6 +48,9 @@ function add(todo) {
         doneButton.type = "button";
         doneButton.classList.add("btn");
         doneButton.style.float = "right";
+        doneButton.style.margin = "0 5px"
+        doneButton.style.border = "solid 1px #c0c0c0";
+        doneButton.style.backgroundColor = "#f5f5f5";
         doneButton.innerText = "完了";
 
         doneButton.addEventListener("click", function() {
@@ -58,6 +61,9 @@ function add(todo) {
         deleteButton.type = "button";
         deleteButton.classList.add("btn");
         deleteButton.style.float = "right";
+        deleteButton.style.margin = "0 5px"
+        deleteButton.style.border = "solid 1px #c0c0c0";
+        deleteButton.style.backgroundColor = "#f5f5f5";
         deleteButton.innerText = "x";
 
         deleteButton.addEventListener("click", function() {
@@ -100,7 +106,7 @@ function saveData(){
             priority: priority,
             completed: list.classList.contains("text-decoration-line-through")
         };
-        
+
         if (date) {
             todo.date = date;
         }

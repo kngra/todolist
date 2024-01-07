@@ -33,13 +33,25 @@ function add(todo) {
     }
     if (todoText) {
         const li = document.createElement("li");
+        const textContent = document.createElement("div");
+
+        const priorityContent = document.createElement("div");
+        priorityContent.textContent = `優先度：${priority}`;
+        textContent.appendChild(priorityContent);
+
+        const todoContent = document.createElement("div");
+        todoContent.textContent = `内容：${todoText}`;
+        textContent.appendChild(todoContent);
+
         if (date) {
-            li.textContent = `優先度：${priority} ,${todoText}, 期日：${date}`;
-        } else {
-            li.textContent = `優先度：${priority} ,${todoText}`;
+            const dateContent = document.createElement("div");
+            dateContent.textContent = `期日：${date}`;
+            textContent.appendChild(dateContent);
         }
+
+        li.appendChild(textContent);
         li.classList.add("list-group-item");
- 
+
         if (todo && todo.completed) {
             li.classList.add("text-decoration-line-through");
         }
@@ -47,8 +59,8 @@ function add(todo) {
         const doneButton = document.createElement("button");
         doneButton.type = "button";
         doneButton.classList.add("btn");
-        doneButton.style.float = "right";
-        doneButton.style.margin = "0 5px"
+        doneButton.style.float = "left";
+        doneButton.style.margin = "5px"
         doneButton.style.border = "solid 1px #c0c0c0";
         doneButton.style.backgroundColor = "#f5f5f5";
         doneButton.innerText = "完了";
@@ -60,8 +72,8 @@ function add(todo) {
         const deleteButton = document.createElement("button");
         deleteButton.type = "button";
         deleteButton.classList.add("btn");
-        deleteButton.style.float = "right";
-        deleteButton.style.margin = "0 5px"
+        deleteButton.style.float = "left";
+        deleteButton.style.margin = "5px"
         deleteButton.style.border = "solid 1px #c0c0c0";
         deleteButton.style.backgroundColor = "#f5f5f5";
         deleteButton.innerText = "x";
@@ -71,9 +83,8 @@ function add(todo) {
             saveData();
         });
 
-        li.appendChild(deleteButton);
         li.appendChild(doneButton);
-
+        li.appendChild(deleteButton);
 
         li.addEventListener("contextmenu", function(event){
             event.preventDefault();

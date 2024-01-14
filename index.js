@@ -1,3 +1,10 @@
+document.getElementById("form").style.display = "none";
+
+document.getElementById("add").onclick = function() {
+    const form = document.getElementById("form");
+    form.style.display = (form.style.display === "none") ? "block" : "none";
+};
+
 const form = document.getElementById("form");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
@@ -18,6 +25,7 @@ form.addEventListener("submit",function (event) {
 const submitButton = document.querySelector("button[type='submit']");
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
+    document.getElementById("form").style.display = "none";
     add();
 });
 

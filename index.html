@@ -13,14 +13,14 @@
         <h1 class="text-center text-info my-4">TODO</h1>
         <div class="tab">
             <ul class="tab_list">
-              <li class="tab_list-item is-active" data-tab="01">リスト1</li>
-              <li class="tab_list-item" data-tab="02">リスト2</li>
-              <li class="tab_list-item" data-tab="03">リスト3</li>
+                <li class="tab_list-item is-active" data-tab="01">リスト1</li>
+                <li class="tab_list-item" data-tab="02">リスト2</li>
+                <li class="tab_list-item" data-tab="03">リスト3</li>
             </ul>
             <div class="tab_panel">
               <div class="tab_panel-box tab_panel-box001 is-show" data-panel="01">
-                <button id="add" type="button" class="btn btn-primary rounded-circle p-0 my-3" style="width:2rem;height:2rem;">＋</button>
-                <form id="form" class="mb-4">
+                <button id="add1" type="button" class="btn btn-primary rounded-circle p-0 my-3" style="width:2rem;height:2rem;">＋</button>
+                <form id="form1" class="mb-4">
                     <input type="text" id="input" class="form-control" placeholder="TODOを入力" autocomplete="off">      
                     <br>
                     <p>優先度: <select id="priority">
@@ -36,10 +36,38 @@
                 <ul class="list-group text-secondary" id="ul"></ul>
               </div>
               <div class="tab_panel-box tab_panel-box002" data-panel="02">
-                <p class="tab_panel-text">2枚目のタブ</p>
+                <button id="add2" type="button" class="btn btn-primary rounded-circle p-0 my-3" style="width:2rem;height:2rem;">＋</button>
+                <form id="form2" class="mb-4">
+                    <input type="text" id="input" class="form-control" placeholder="TODOを入力" autocomplete="off">      
+                    <br>
+                    <p>優先度: <select id="priority">
+                        <option>高</option>
+                        <option selected>中</option>
+                        <option>低</option>
+                    </select></p>
+                    <p>期日: <input id="date" type="date"></p>
+                    <div class="my-2">
+                        <button type="submit" class="btn btn-primary">登録</button> 
+                    </div>
+                </form>
+                <ul class="list-group text-secondary" id="ul2"></ul>
               </div>
               <div class="tab_panel-box tab_panel-box003" data-panel="03">
-                <p class="tab_panel-text">3枚目のタブ</p>
+                <button id="add3" type="button" class="btn btn-primary rounded-circle p-0 my-3" style="width:2rem;height:2rem;">＋</button>
+                <form id="form3" class="mb-4">
+                    <input type="text" id="input" class="form-control" placeholder="TODOを入力" autocomplete="off">      
+                    <br>
+                    <p>優先度: <select id="priority">
+                        <option>高</option>
+                        <option selected>中</option>
+                        <option>低</option>
+                    </select></p>
+                    <p>期日: <input id="date" type="date"></p>
+                    <div class="my-2">
+                        <button type="submit" class="btn btn-primary">登録</button> 
+                    </div>
+                </form>
+                <ul class="list-group text-secondary" id="ul3"></ul>
               </div>
             </div>
           </div>

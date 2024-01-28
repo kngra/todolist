@@ -42,26 +42,19 @@ function tabSwitch(e) {
       tabPanelItem.classList.add('is-show');
     }
   })
-
+}
 }
 
-}
+document.getElementById("form1").style.display = "none";
+document.getElementById("form2").style.display = "none";
+document.getElementById("form3").style.display = "none";
 
-
-
-
-
-
-
-
-document.getElementById("form").style.display = "none";
-
-document.getElementById("add").onclick = function() {
-    const form = document.getElementById("form");
-    form.style.display = (form.style.display === "none") ? "block" : "none";
+document.getElementById("add1").onclick = function() {
+    const form1 = document.getElementById("form1");
+    form1.style.display = (form1.style.display === "none") ? "block" : "none";
 };
 
-const form = document.getElementById("form");
+const form1 = document.getElementById("form1");
 const input = document.getElementById("input");
 const ul = document.getElementById("ul");
 
@@ -73,7 +66,7 @@ if (todos) {
     })
 }
 
-form.addEventListener("submit",function (event) {
+form1.addEventListener("submit",function (event) {
     event.preventDefault();
     add();
 });
@@ -81,7 +74,7 @@ form.addEventListener("submit",function (event) {
 const submitButton = document.querySelector("button[type='submit']");
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
-    document.getElementById("form").style.display = "none";
+    document.getElementById("form1").style.display = "none";
     add();
 });
 

@@ -53,6 +53,14 @@ document.getElementById("add1").onclick = function() {
     const form1 = document.getElementById("form1");
     form1.style.display = (form1.style.display === "none") ? "block" : "none";
 };
+document.getElementById("add2").onclick = function() {
+    const form2 = document.getElementById("form2");
+    form2.style.display = (form2.style.display === "none") ? "block" : "none";
+};
+document.getElementById("add3").onclick = function() {
+    const form3 = document.getElementById("form3");
+    form3.style.display = (form3.style.display === "none") ? "block" : "none";
+};
 
 const form1 = document.getElementById("form1");
 const input = document.getElementById("input");
@@ -70,6 +78,7 @@ form1.addEventListener("submit",function (event) {
     event.preventDefault();
     add();
 });
+
 
 const submitButton = document.querySelector("button[type='submit']");
 submitButton.addEventListener("click", function(event) {

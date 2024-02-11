@@ -132,6 +132,7 @@ function add(todo) {
         doneButton.innerText = "完了";
 
         doneButton.addEventListener("click", function() {
+            li.classList.toggle("text-decoration-line-through");
             saveData();
         });
 
@@ -152,17 +153,6 @@ function add(todo) {
         li.appendChild(doneButton);
         li.appendChild(deleteButton);
 
-        li.addEventListener("contextmenu", function(event){
-            event.preventDefault();
-            li.remove();
-            saveData();
-        });
-
-        li.addEventListener("click", function (deleteButton) {
-            li.classList.toggle("text-decoration-line-through");
-            saveData();
-        });
-
         ul.appendChild(li);
         input.value = "";
         saveData();
@@ -173,7 +163,7 @@ function saveData(){
     const lists = document.querySelectorAll("li");
     let todos = [];
 
-    lists.forEach(list => {
+    lists.forEach((list) => {
         let todoText = list.textContent.replace(/^優先度: \w+, 期日：\w+, /, '');
         let priority = list.innerText.replace(/優先度: (\w+), 期日：(\w+), .*/, '$1');
         let date = list.innerText.replace(/優先度: \w+, 期日：(\w+), .*/, '$1');

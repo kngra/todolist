@@ -4,7 +4,7 @@
 
 // DOM取得
 const tabMenus = document.querySelectorAll('.tab_list-item');
-console.log(tabMenus);
+
 
 // イベント付加
 tabMenus.forEach((tabMenu) => {
@@ -18,13 +18,11 @@ function tabSwitch(e) {
   const tabTargetData = e.currentTarget.dataset.tab;
   // クリックされた要素の親要素と、その子要素を取得
   const tabList = e.currentTarget.closest('.tab_list');
-  console.log(tabList);
   const tabItems = tabList.querySelectorAll('.tab_list-item');
-  console.log(tabItems);
+
   // クリックされた要素の親要素の兄弟要素の子要素を取得
   const tabPanelItems = tabList.
   nextElementSibling.querySelectorAll('.tab_panel-box');
-  console.log(tabPanelItems);
 
   // クリックされたtabの同階層のmenuとpanelのクラスを削除
   tabItems.forEach((tabItem) => {
@@ -63,8 +61,12 @@ document.getElementById("add3").onclick = function() {
 };
 
 const form1 = document.getElementById("form1");
-const input = document.getElementById("input");
-const ul = document.getElementById("ul");
+const input1 = document.getElementById("input1");
+const ul1 = document.getElementById("ul1");
+
+const form2 = document.getElementById("form2");
+const input2 = document.getElementById("input2");
+const ul2 = document.getElementById("ul2");
 
 const todos = JSON.parse(localStorage.getItem("todos"));
 
@@ -79,47 +81,61 @@ form1.addEventListener("submit",function (event) {
     add();
 });
 
+form2.addEventListener("submit",function (event) {
+    event.preventDefault();
+    add();
+});
+
 
 const submitButton = document.querySelector("button[type='submit']");
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
     document.getElementById("form1").style.display = "none";
+    document.getElementById("form2").style.display = "none";
     add();
 });
 
 function add(todo) {
-    let todoText = input.value;
-    let priority = document.getElementById("priority").value;
-    let date = document.getElementById("date").value;
+    let todoText1 = input1.value;
+    let priority1 = document.getElementById("priority1").value;
+    let date1 = document.getElementById("date1").value;
+
+    let todoText2 = input2.value;
+    let priority2 = document.getElementById("priority2").value;
+    let date2 = document.getElementById("date2").value;
 
     if (todo){
-        todoText = todo.text;
-        priority = todo.priority;
-        date = todo.date;
+        todoText1 = todo.text1;
+        priority1 = todo.priority1;
+        date1 = todo.date1;
+
+        todoText2 = todo.text2;
+        priority2 = todo.priority2;
+        date2 = todo.date2;
     }
-    if (todoText) {
-        const li = document.createElement("li");
+    if (todoText1) {
+        const li1 = document.createElement("li1");
         const textContent = document.createElement("div");
 
-        const priorityContent = document.createElement("div");
-        priorityContent.textContent = `優先度：${priority}`;
-        textContent.appendChild(priorityContent);
+        const priority1Content = document.createElement("div");
+        priority1Content.textContent = `優先度：${priority1}`;
+        textContent.appendChild(priority1Content);
 
         const todoContent = document.createElement("div");
-        todoContent.textContent = `内容：${todoText}`;
+        todoContent.textContent = `内容：${todoText1}`;
         textContent.appendChild(todoContent);
 
-        if (date) {
-            const dateContent = document.createElement("div");
-            dateContent.textContent = `期日：${date}`;
-            textContent.appendChild(dateContent);
+        if (date1) {
+            const date1Content = document.createElement("div");
+            date1Content.textContent = `期日：${date1}`;
+            textContent.appendChild(date1Content);
         }
 
-        li.appendChild(textContent);
-        li.classList.add("list-group-item");
+        li1.appendChild(textContent);
+        li1.classList.add("list-group-item");
 
         if (todo && todo.completed) {
-            li.classList.add("text-decoration-line-through");
+            li1.classList.add("text-decoration-line-through");
         }
 
         const doneButton = document.createElement("button");
@@ -132,7 +148,8 @@ function add(todo) {
         doneButton.innerText = "完了";
 
         doneButton.addEventListener("click", function() {
-            li.classList.toggle("text-decoration-line-through");
+            li1.classList.toggle
+            ("text-decoration-line-through");
             saveData();
         });
 
@@ -146,39 +163,40 @@ function add(todo) {
         deleteButton.innerText = "×";
 
         deleteButton.addEventListener("click", function() {
-            li.remove();
+            li1.remove();
             saveData();
         });
 
-        li.appendChild(doneButton);
-        li.appendChild(deleteButton);
+        li1.appendChild(doneButton);
+        li1.appendChild(deleteButton);
 
-        ul.appendChild(li);
-        input.value = "";
+        ul1.appendChild(li1);
+        input1.value = "";
         saveData();
     }
 }
 
 function saveData(){
-    const lists = document.querySelectorAll("li");
+    const lists = document.querySelectorAll("li1");
     let todos = [];
 
     lists.forEach((list) => {
-        let todoText = list.textContent.replace(/^優先度: \w+, 期日：\w+, /, '');
-        let priority = list.innerText.replace(/優先度: (\w+), 期日：(\w+), .*/, '$1');
-        let date = list.innerText.replace(/優先度: \w+, 期日：(\w+), .*/, '$1');
+        let todoText1 = list.textContent.replace(/^優先度: \w+, 期日：\w+, /, '');
+        let priority1 = list.innerText.replace(/優先度: (\w+), 期日：(\w+), .*/, '$1');
+        let date1 = list.innerText.replace(/優先度: \w+, 期日：(\w+), .*/, '$1');
 
         let todo = {
-            text: list.innerText,
-            priority: priority,
+            text1: list.innerText,
+            priority1: priority1,
             completed: list.classList.contains("text-decoration-line-through")
         };
 
-        if (date) {
-            todo.date = date;
+        if (date1) {
+            todo.date1 = date1;
         }
 
         todos.push(todo);
     });
     localStorage.setItem("todos", JSON.stringify(todos));
 }
+
